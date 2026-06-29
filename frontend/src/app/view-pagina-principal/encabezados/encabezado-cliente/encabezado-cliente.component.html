@@ -1,0 +1,20 @@
+<header class="main-header">
+  <div class="left-section">
+    <a routerLink="/" id="logo">wiriwiriwiri</a>
+  </div>
+
+  <div class="search-section">
+    <input type="text" id="barra-buscadora" class="search-bar" placeholder="Buscar productos" />
+  </div>
+
+  <div class="right-section">
+    <a href="#" (click)="abrirModalPerfil()">Perfil</a>
+    <a routerLink="/carrito" id="cart-icon">Carrito</a>
+    <a href="#" (click)="cerrarSesion()">Cerrar sesión</a>
+  </div>
+</header>
+<app-modal-perfil-cliente
+  *ngIf="mostrarModalPerfil"
+  [usuario]="usuario"
+  (click)="cerrarModalPerfil()">
+</app-modal-perfil-cliente>

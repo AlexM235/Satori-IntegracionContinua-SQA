@@ -1,0 +1,33 @@
+[ {
+  "id" : 1,
+  "usuario" : "admin",
+  "correo" : "admin@tienda.com",
+  "contrasena" : "admin123",
+  "rol" : "ADMIN",
+  "carrito" : [ ],
+  "foto" : null
+}, {
+  "id" : 3,
+  "usuario" : "LuisVal13",
+  "correo" : "luis.valbuena.13ar@gmail.com",
+  "contrasena" : "1614018",
+  "rol" : "CLIENTE",
+  "carrito" : [ ],
+  "foto" : null
+}, {
+  "id" : 4,
+  "usuario" : "NuevoUser2",
+  "correo" : "UsuarioNoob2@gmail.com",
+  "contrasena" : null,
+  "rol" : "CLIENTE",
+  "carrito" : [ ],
+  "foto" : null
+}, {
+  "id" : 5,
+  "usuario" : "NuevoUser3",
+  "correo" : "UsuarioNoob3@gmail.com",
+  "contrasena" : "usuario123",
+  "rol" : "CLIENTE",
+  "carrito" : [ ],
+  "foto" : null
+} ]

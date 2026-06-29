@@ -1,0 +1,49 @@
+[ {
+  "id" : 1,
+  "nombre" : "Reloj POEDGAR Azul Plateado",
+  "descripcion" : null,
+  "precio" : 20.0,
+  "imagen" : "http://localhost:8080/imagenes/azul_plateado.jpg",
+  "tipo" : "RELOJ",
+  "cantidad" : 2000
+}, {
+  "id" : 2,
+  "nombre" : "Reloj POEDGAR Blanco Plateado",
+  "descripcion" : null,
+  "precio" : 20.0,
+  "imagen" : "http://localhost:8080/imagenes/blanco_plateado.jpg",
+  "tipo" : "RELOJ",
+  "cantidad" : 2000
+}, {
+  "id" : 3,
+  "nombre" : "Reloj POEDGAR Negro Plateado",
+  "descripcion" : null,
+  "precio" : 20.0,
+  "imagen" : "http://localhost:8080/imagenes/negro_plateado.jpg",
+  "tipo" : "RELOJ",
+  "cantidad" : 2000
+}, {
+  "id" : 4,
+  "nombre" : "Reloj POEDGAR Verde Plateado",
+  "descripcion" : null,
+  "precio" : 20.0,
+  "imagen" : "http://localhost:8080/imagenes/verde_plateado.jpg",
+  "tipo" : "RELOJ",
+  "cantidad" : 2000
+}, {
+  "id" : 6,
+  "nombre" : "Reloj del Rayo McQueen",
+  "descripcion" : "Cuchau",
+  "precio" : 10000.0,
+  "imagen" : "http://localhost:8080/imagenes/1751971226678_RayoMcqueen.jpg",
+  "tipo" : "RELOJ",
+  "cantidad" : 100
+}, {
+  "id" : 7,
+  "nombre" : "Probando",
+  "descripcion" : "Probando",
+  "precio" : 1.0,
+  "imagen" : "http://localhost:8080/imagenes/1751980618072_idk.jpg",
+  "tipo" : "RELOJ",
+  "cantidad" : 1
+} ]

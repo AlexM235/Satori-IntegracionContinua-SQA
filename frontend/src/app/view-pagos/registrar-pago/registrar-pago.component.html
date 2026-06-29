@@ -1,0 +1,86 @@
+<div class="container">
+  <h1>Registrar Pago</h1>
+
+  <div class="card">
+    <label for="metodo">Método de Pago:</label>
+    <select id="metodo" name="metodo" [(ngModel)]="metodoSeleccionado">
+      <option value="pago_movil">Pago Móvil</option>
+      <option value="transferencia">Transferencia</option>
+    </select>
+
+    <!-- Info para Pago Móvil -->
+    <div *ngIf="metodoSeleccionado === 'pago_movil'" class="info-pago">
+      <p><strong>Banco:</strong> Banco del Pueblo</p>
+      <p><strong>Teléfono:</strong> 0414-1234567</p>
+      <p><strong>CI/RIF:</strong> V12345678</p>
+    </div>
+
+    <!-- Info para Transferencia -->
+    <div *ngIf="metodoSeleccionado === 'transferencia'" class="info-pago">
+      <p><strong>Banco:</strong> Banco Nacional</p>
+      <p><strong>Nro de Cuenta:</strong> 0102-0123-4567-8901</p>
+      <p><strong>Titular:</strong> MCL Relojes y Accesorios</p>
+      <p><strong>CI/RIF:</strong> J123456789</p>
+
+      <label>Nombre del Titular:</label>
+      <input type="text" [(ngModel)]="nombreTitular" name="nombreTitular" placeholder="Ej. José Pérez" required />
+
+      <label>Cédula del Titular:</label>
+      <input type="text" [(ngModel)]="cedulaTitular" name="cedulaTitular" placeholder="Ej. V-12345678" required />
+
+      <label>Banco de Origen:</label>
+      <input type="text" [(ngModel)]="bancoOrigen" name="bancoOrigen" placeholder="Ej. Banco de Venezuela" required />
+
+      <label>Fecha de Transferencia:</label>
+      <input type="date" [(ngModel)]="fechaTransferencia" name="fechaTransferencia" required />
+    </div>
+
+    <form (ngSubmit)="enviarPago()" #pagoForm="ngForm">
+      <div class="monto-box">
+        <label for="monto">Monto a Pagar:</label>
+        <input id="monto" type="number" [value]="montoSistema" disabled />
+      </div>
+
+      <label>Comprobante de pago (obligatorio):</label>
+      <div class="upload-box" (click)="fileInput.click()">
+        <input
+          type="file"
+          accept="image/*"
+          #fileInput
+          (change)="onFileSelected($event)"
+          hidden
+        />
+
+        <div *ngIf="imagenBase64; else placeholder">
+          <img [src]="imagenBase64" class="preview-image" alt="Comprobante de pago" />
+        </div>
+
+        <ng-template #placeholder>
+          <p class="upload-placeholder">Haz clic aquí para subir el comprobante de pago</p>
+        </ng-template>
+      </div>
+
+      <label for="referencia">Número de Referencia:</label>
+      <input
+        id="referencia"
+        type="text"
+        name="referencia"
+        [(ngModel)]="referencia"
+        pattern="^[0-9]{12,20}$"
+        required
+        placeholder="Ingresa el número de referencia del pago"
+      />
+
+      <div class="botones-acciones">
+        <button type="button" (click)="cancelarCompra()" class="btn-cancelar">
+          Cancelar compra
+        </button>
+        <button type="submit" class="btn-enviar">
+        Enviar pago
+        </button>
+      </div>
+
+
+    </form>
+  </div>
+</div>

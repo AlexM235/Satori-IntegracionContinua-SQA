@@ -1,0 +1,178 @@
+<!-- catalogo-administrador.component.html -->
+<div class="catalogo-admin-container">
+  <!-- Encabezado del catálogo -->
+  <div class="catalogo-header">
+    <h2>Administración de Productos</h2>
+    <button class="btn-agregar" (click)="abrirModal()">
+      <i class="fas fa-plus"></i> Agregar Producto
+    </button>
+  </div>
+
+  <!-- Mensajes de error -->
+  @if (error) {
+    <div class="error-message">
+      {{ error }}
+      <button (click)="error = null">×</button>
+    </div>
+  }
+
+  <!-- Listado de productos -->
+  @if (loading) {
+    <div class="loading-message">
+      <p>Cargando productos...</p>
+    </div>
+  } @else if (productos.length === 0) {
+    <div class="no-products">
+      <p>No hay productos disponibles</p>
+    </div>
+  } @else {
+    <div class="product-grid">
+      @for (producto of productos; track producto.id) {
+        <div class="product-card">
+          <div class="product-image-container">
+            <img [src]="producto.imagen || 'assets/imagenes/default-product.png'" 
+                [alt]="producto.nombre" 
+                class="product-image"
+                (error)="manejarErrorImagen($event)">
+          </div>
+          <div class="product-details">
+            <h3 class="product-title">{{producto.nombre}}</h3>
+            <p class="product-description">{{producto.descripcion || 'Sin descripción'}}</p>
+            <div class="product-meta">
+              <span class="product-type">{{producto.tipo}}</span>
+              <span class="product-price">{{producto.precio | currency:'USD':'symbol':'1.2-2'}}</span>
+              <span class="product-stock">Stock: {{producto.cantidad}}</span>
+            </div>
+          </div>
+          <div class="product-actions">
+            <button class="btn-edit" (click)="abrirModal(producto)">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+            <button class="btn-delete" (click)="eliminarProducto(producto.id)">
+              <i class="fas fa-trash-alt"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Modal para agregar/editar producto -->
+  <div class="modal-overlay" [class.active]="mostrarModal" (click)="cerrarModal()"></div>
+  
+  <div class="modal" [class.active]="mostrarModal">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close-modal" (click)="cerrarModal()">&times;</span>
+      
+      <h2>{{modoEdicion ? 'Editar Producto' : 'Agregar Nuevo Producto'}}</h2>
+      
+      <form (ngSubmit)="guardarProducto()" #productoForm="ngForm">
+        <div class="form-scrollable">
+          <div class="form-group">
+            <label for="nombre">Nombre del Producto</label>
+            <input type="text" id="nombre" 
+                   [(ngModel)]="productoActual.nombre" 
+                   name="nombre" 
+                   required
+                   placeholder="Ej: Reloj Coleccionable">
+          </div>
+          
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" 
+                      [(ngModel)]="productoActual.descripcion" 
+                      name="descripcion"
+                      rows="3"
+                      placeholder="Descripción detallada del producto"></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tipo">Tipo de Producto</label>
+              <select id="tipo" 
+                      [(ngModel)]="productoActual.tipo" 
+                      name="tipo" 
+                      required>
+                <option value="RELOJ">RELOJ</option>
+                <!-- Agrega más opciones si es necesario -->
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="precio">Precio ($)</label>
+              <input type="number" id="precio" 
+                     [(ngModel)]="productoActual.precio" 
+                     name="precio" 
+                     required
+                     min="0"
+                     step="0.01"
+                     placeholder="0.00">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cantidad">Cantidad en Stock</label>
+              <input type="number" id="cantidad" 
+                     [(ngModel)]="productoActual.cantidad" 
+                     name="cantidad" 
+                     required
+                     min="0"
+                     placeholder="0">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Imagen del Producto</label>
+            <div class="image-upload-container">
+              <label class="image-upload-label" for="file-upload">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Selecciona una imagen o arrástrala aquí</span>
+                <input id="file-upload" type="file" class="image-upload-input" 
+                       accept="image/*" (change)="onFileSelected($event)">
+              </label>
+
+              @if (vistaPreviaImagen) {
+                <div class="image-preview">
+                  <img [src]="vistaPreviaImagen" alt="Vista previa de la imagen">
+                  <button type="button" class="btn-change-image" (click)="eliminarImagen()">
+                    Cambiar imagen
+                  </button>
+                </div>
+              }
+
+              @if (!vistaPreviaImagen && productoActual.imagen) {
+                <div class="image-preview">
+                  <img [src]="productoActual.imagen" alt="Imagen actual del producto" 
+                       (error)="manejarErrorImagen($event)">
+                  <button type="button" class="btn-change-image" (click)="eliminarImagen()">
+                    Cambiar imagen
+                  </button>
+                </div>
+              }
+
+              <p class="image-url-option">O ingresa una URL:</p>
+              <input type="text" id="imagen" 
+                     [(ngModel)]="productoActual.imagen" 
+                     name="imagen" 
+                     placeholder="https://ejemplo.com/imagen.jpg">
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" (click)="cerrarModal()" [disabled]="enviandoDatos">
+            Cancelar
+          </button>
+          <button type="submit" class="btn-submit" [disabled]="enviandoDatos || productoForm.invalid">
+            @if (enviandoDatos) {
+              <i class="fas fa-spinner fa-spin"></i> Procesando...
+            } @else {
+              {{modoEdicion ? 'Actualizar Producto' : 'Agregar Producto'}}
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="modal" (click)="cerrarModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+
+    <!-- Botón cerrar -->
+    <button class="cerrar-btn" (click)="cerrarModal()">❌</button>
+
+    <h2>Perfil del Cliente</h2>
+
+    <!-- Información del usuario -->
+    <div *ngIf="usuario">
+      <p><strong>Usuario:</strong> {{ usuario.usuario }}</p>
+      <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+      <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+
+      <div *ngIf="usuario.foto">
+        <p><strong>Foto:</strong></p>
+        <img [src]="usuario.foto" alt="Foto de perfil" class="foto-perfil" />
+      </div>
+    </div>
+
+    <!-- Mensaje si no hay usuario -->
+    <div *ngIf="!usuario">
+      <p>No hay datos disponibles del usuario.</p>
+    </div>
+
+    <!-- Botón para mostrar el formulario de edición -->
+    <button class="btn editar" (click)="modoEdicion = true">Editar Perfil</button>
+
+    <!-- Formulario para editar -->
+    <div *ngIf="modoEdicion">
+      <form #form="ngForm" (ngSubmit)="guardarCambios()">
+        <label>
+          Usuario:
+          <input type="text" name="usuario" [(ngModel)]="usuario.usuario" required />
+        </label>
+
+        <label>
+          Correo:
+          <input type="email" name="correo" [(ngModel)]="usuario.correo" required />
+        </label>
+
+        <div style="margin-top: 1rem;">
+          <button type="submit" class="btn">Guardar Cambios</button>
+          <button type="button" class="btn cancelar" (click)="modoEdicion = false">Cancelar</button>
+        </div>
+      </form>
+      <div *ngIf="mensajeConfirmacion" class="mensaje-ok">{{ mensajeConfirmacion }}</div>
+    </div>
+
+    <!-- Botón inicial para eliminar -->
+    <button class="btn eliminar" (click)="iniciarEliminacion()">Eliminar Perfil</button>
+
+    <!-- Primera confirmación -->
+    <div *ngIf="mostrarConfirmacion" class="confirm-box">
+      <p>¿Está seguro de que desea eliminar su perfil?</p>
+      <button (click)="confirmarPrimeraEtapa()">Sí</button>
+      <button (click)="cancelar()">No</button>
+    </div>
+
+    <!-- Segunda: Verificación de contraseña -->
+    <div *ngIf="mostrarVerificacionContrasena" class="confirm-box">
+      <p>Por favor, escriba su contraseña para confirmar:</p>
+      <input type="password" [(ngModel)]="contrasena" placeholder="Contraseña" />
+      <div *ngIf="error" class="error">{{ error }}</div>
+      <button (click)="verificarContrasena()">Confirmar</button>
+      <button (click)="cancelar()">Cancelar</button>
+    </div>
+
+    <!-- Tercera y última confirmación -->
+    <div *ngIf="mostrarUltimaConfirmacion" class="confirm-box">
+      <p>¿Seguro que desea eliminar su perfil? Esta acción no se puede deshacer.</p>
+      <button class="btn eliminar" (click)="confirmarEliminacionFinal()">Eliminar definitivamente</button>
+      <button (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>
+</div>

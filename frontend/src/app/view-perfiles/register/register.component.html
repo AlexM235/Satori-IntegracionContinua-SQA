@@ -1,0 +1,73 @@
+<div class="auth-container">
+  <div class="auth-form">
+    <h2>Registro</h2>
+
+    <form #registroForm="ngForm" (ngSubmit)="registrar()">
+      <div class="input-icon-group">
+        <input
+          name="usuario"
+          [(ngModel)]="usuario"
+          placeholder="Nombre de usuario"
+          required
+          (keyup.enter)="registrar()">
+        <i class="fas fa-user"></i>
+      </div>
+
+      <div class="input-icon-group">
+        <input
+          name="correo"
+          [(ngModel)]="correo"
+          #correoInput="ngModel"
+          type="email"
+          required
+          email
+          placeholder="Correo electrónico"
+          (keyup.enter)="registrar()">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <p class="error-message"
+         *ngIf="correoInput.invalid && correoInput.touched">
+         Ingresa un correo electrónico válido.
+      </p>
+
+      <div class="input-icon-group">
+        <input
+          name="contrasena"
+          [(ngModel)]="contrasena"
+          type="password"
+          required
+          placeholder="Contraseña"
+          (keyup.enter)="registrar()">
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <div class="input-icon-group">
+        <input
+          name="confirmarContrasena"
+          [(ngModel)]="confirmarContrasena"
+          type="password"
+          required
+          placeholder="Confirmar contraseña"
+          (keyup.enter)="registrar()">
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="cargando || registroForm.invalid"
+        class="register-button">
+        <span *ngIf="cargando" class="spinner"></span>
+        <span>{{ cargando ? 'Registrando...' : 'Registrarse' }}</span>
+      </button>
+    </form>
+
+    <p *ngIf="mensajeError" class="error-message">{{ mensajeError }}</p>
+    <p *ngIf="mensajeExito" class="success-message">{{ mensajeExito }}</p>
+  </div>
+
+  <div class="auth-panel">
+    <h1>¡Bienvenido!</h1>
+    <p>¿Ya tienes cuenta?</p>
+    <a routerLink="/login" class="ghost-button">Login</a>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<!-- control-catalogos.component.html -->
+@if (authService.isAuthenticated()) {
+  @if (authService.isAdmin()) {
+    <app-catalogo-administrador></app-catalogo-administrador>
+  } @else {
+    <app-catalogo-cliente></app-catalogo-cliente>
+  }
+} @else {
+  <app-catalogo-cliente></app-catalogo-cliente>
+}

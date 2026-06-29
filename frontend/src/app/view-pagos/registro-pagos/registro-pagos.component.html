@@ -1,0 +1,49 @@
+<div class="registro-container">
+  <h2>Registro de Pagos</h2>
+
+  <table class="tabla-pagos">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Monto</th>
+        <th>Método</th>
+        <th>Referencia</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pago of pagos">
+        <td>{{ pago.usuario }}</td>
+        <td>{{ pago.monto | currency:'VES':'symbol':'1.2-2' }}</td>
+        <td>{{ pago.metodo }}</td>
+        <td>{{ pago.referencia }}</td>
+        <td [ngClass]="estadoClase(pago.estado)">{{ pago.estado }}</td>
+        <td>
+            <div class="acciones">
+                <button (click)="abrirModal(pago)">Consultar</button>
+                <button class="btn-eliminar" (click)="eliminarPago(pago.id)">Eliminar</button>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal-fondo" *ngIf="mostrarModal">
+    <div class="modal">
+      <h3>Detalle del Pago</h3>
+      <p><strong>Usuario:</strong> {{ pagoSeleccionado?.usuario }}</p>
+      <p><strong>Monto:</strong> {{ pagoSeleccionado?.monto | currency:'VES' }}</p>
+      <p><strong>Método:</strong> {{ pagoSeleccionado?.metodo }}</p>
+      <p><strong>Referencia:</strong> {{ pagoSeleccionado?.referencia }}</p>
+      <p><strong>Estado:</strong> {{ pagoSeleccionado?.estado }}</p>
+      <p *ngIf="pagoSeleccionado?.razonRechazo"><strong>Razón de rechazo:</strong> {{ pagoSeleccionado?.razonRechazo }}</p>
+      <p *ngIf="pagoSeleccionado?.nombreTitular"><strong>Titular:</strong> {{ pagoSeleccionado?.nombreTitular }}</p>
+      <p *ngIf="pagoSeleccionado?.bancoOrigen"><strong>Banco de Origen:</strong> {{ pagoSeleccionado?.bancoOrigen }}</p>
+      <p *ngIf="pagoSeleccionado?.fechaTransferencia"><strong>Fecha de Transferencia:</strong> {{ pagoSeleccionado?.fechaTransferencia | date:'short' }}</p>
+
+      <button (click)="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+</div>

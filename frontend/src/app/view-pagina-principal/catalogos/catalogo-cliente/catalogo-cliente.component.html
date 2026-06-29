@@ -1,0 +1,22 @@
+<div class="catalogo-productos">
+  <div class="product-card" *ngFor="let producto of productos">
+    <div class="product-image-container">
+      <img [src]="obtenerUrlImagen(producto.imagen)" [alt]="producto.nombre" class="product-image">
+    </div>
+    <div class="product-details">
+      <h3 class="product-title">{{ producto.nombre }}</h3>
+      <p class="product-description">{{ producto.descripcion }}</p>
+      <div class="product-meta">
+        <span class="product-type">{{ producto.tipo }}</span>
+        <span class="product-price">{{ formatearPrecio(producto.precio) }}</span>
+      </div>
+    </div>
+    <button class="btn-agregar-carrito" (click)="agregarAlCarrito(producto)">
+      <i class="fas fa-cart-plus"></i> Añadir al carrito
+    </button>
+  </div>
+
+  <div *ngIf="productos.length === 0" class="no-products">
+    <p>No hay productos disponibles en este momento.</p>
+  </div>
+</div>

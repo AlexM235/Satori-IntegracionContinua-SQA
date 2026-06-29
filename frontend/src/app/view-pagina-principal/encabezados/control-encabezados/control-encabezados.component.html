@@ -1,0 +1,10 @@
+<!-- control-encabezados.component.html -->
+@if (authService.isAuthenticated()) {
+  @if (authService.isAdmin()) {
+    <app-encabezado-administrador></app-encabezado-administrador>
+  } @else {
+    <app-encabezado-cliente></app-encabezado-cliente>
+  }
+} @else {
+  <app-encabezado-visita></app-encabezado-visita>
+}

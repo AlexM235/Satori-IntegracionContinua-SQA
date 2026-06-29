@@ -1,0 +1,20 @@
+<header class="main-header">
+  <div class="left-section">
+    <a routerLink="/" id="logo">wiriwiriwiri</a>
+  </div>
+
+  <div class="search-section">
+    <input type="text" id="barra-buscadora" class="search-bar" placeholder="Buscar productos" />
+  </div>
+
+  <div class="right-section">
+    <a routerLink="/login">Inicia sesión</a>
+    <a routerLink="/register">Regístrate</a>
+    <a routerLink="/carrito" id="cart-icon">
+      Carrito
+      <!--<span class="cart-badge" *ngIf="carritoService.getCantidadItems() > 0">
+        {{carritoService.getCantidadItems()}}
+      </span>-->
+    </a>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+<div class="auth-container">
+  <div class="auth-panel">
+    <h1>Hola, Bienvenido!</h1>
+    <p>Aun no tienes una cuenta?</p>
+    <a routerLink="/register" class="ghost-button">Registrarte</a>
+  </div>
+
+  <div class="auth-form">
+    <h2>Login</h2>
+
+    <div class="input-icon-group">
+      
+      <input 
+        [(ngModel)]="usuario" 
+        placeholder="Username"
+        (keyup.enter)="iniciarSesion()">
+      <i class="fas fa-user"></i>
+    </div>
+
+    <div class="input-icon-group">
+      <input 
+        [(ngModel)]="contrasena" 
+        type="password"
+        placeholder="Password"
+        (keyup.enter)="iniciarSesion()">
+      <i class="fas fa-lock"></i>
+    </div>
+
+    <button (click)="iniciarSesion()" [disabled]="cargando" class="login-button">
+      <span *ngIf="!cargando">Login</span>
+      <span *ngIf="cargando" class="spinner"></span>
+    </button>
+
+    <p *ngIf="mensajeError" class="error-message">{{ mensajeError }}</p>
+  </div>
+</div>
+

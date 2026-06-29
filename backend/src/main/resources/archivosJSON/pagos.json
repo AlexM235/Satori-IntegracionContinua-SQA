@@ -1,0 +1,45 @@
+[ {
+  "id" : "5956933d-fdfa-4b2a-94c3-03773c57cdab",
+  "usuario" : "LuisVal13",
+  "metodo" : "PAGO_MOVIL",
+  "monto" : 20.0,
+  "referencia" : "6554353383365654",
+  "estado" : "PENDIENTE",
+  "razonRechazo" : null,
+  "nombreTitular" : "",
+  "bancoOrigen" : "",
+  "fechaTransferencia" : ""
+}, {
+  "id" : "6a51e34e-d347-47e1-aceb-65907e2eff5f",
+  "usuario" : "LuisVal13",
+  "metodo" : "PAGO_MOVIL",
+  "monto" : 40.0,
+  "referencia" : "554572145752157",
+  "estado" : "CONFIRMADO",
+  "razonRechazo" : null,
+  "nombreTitular" : "",
+  "bancoOrigen" : "",
+  "fechaTransferencia" : ""
+}, {
+  "id" : "b4079bc7-af4e-44bf-96a2-acab2956b9a2",
+  "usuario" : "LuisVal13",
+  "metodo" : "PAGO_MOVIL",
+  "monto" : 80.0,
+  "referencia" : "48746766878535",
+  "estado" : "PENDIENTE",
+  "razonRechazo" : null,
+  "nombreTitular" : "",
+  "bancoOrigen" : "",
+  "fechaTransferencia" : ""
+}, {
+  "id" : "426ba49a-1675-4dfa-975e-11ea582f5897",
+  "usuario" : "idk",
+  "metodo" : "PAGO_MOVIL",
+  "monto" : 20.0,
+  "referencia" : "123145678911245",
+  "estado" : "PENDIENTE",
+  "razonRechazo" : null,
+  "nombreTitular" : "",
+  "bancoOrigen" : "",
+  "fechaTransferencia" : ""
+} ]

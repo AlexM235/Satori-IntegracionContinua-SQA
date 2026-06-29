@@ -1,0 +1,46 @@
+<h2>Confirmar Pagos</h2>
+
+<!-- Mensaje cuando no hay pagos pendientes -->
+<div *ngIf="pagosPendientes.length === 0" style="text-align: center; margin-top: 20px; color: #888;">
+  <p>No hay confirmaciones de pago pendientes.</p>
+</div>
+
+<!-- Lista de pagos -->
+<ul *ngIf="pagosPendientes.length > 0">
+  <div class="contenedor">
+    <li *ngFor="let pago of pagosPendientes" class="pago-card">
+      <p><strong>Usuario:</strong> {{ pago.usuario }}</p>
+      <p><strong>Método:</strong> {{ pago.metodo }}</p>
+      <p><strong>Monto:</strong> {{ pago.monto }}</p>
+      <p><strong>Referencia:</strong> {{ pago.referencia }}</p>
+
+      <!-- Miniatura del comprobante -->
+      <div *ngIf="pago.imagenComprobante">
+        <p><strong>Comprobante:</strong></p>
+        <img 
+          [src]="pago.imagenComprobante"
+          (click)="abrirModal(pago.imagenComprobante)"
+          class="miniatura"
+          alt="Comprobante"
+        />
+      </div>
+
+      <button (click)="confirmar(pago.id)">Confirmar</button>
+      <button class="rechazar" (click)="toggleRechazo(pago.id)">Rechazar</button>
+
+      <div *ngIf="selectedId === pago.id">
+        <input [(ngModel)]="razonRechazo" placeholder="Razón del rechazo" />
+        <button (click)="rechazar(pago.id)">Enviar rechazo</button>
+      </div>
+    </li>
+  </div>
+</ul>
+
+<!-- Modal de imagen -->
+<div class="modal-overlay" *ngIf="imagenAmpliada" (click)="cerrarModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="cerrar-btn" (click)="cerrarModal()">✕</button>
+    <img [src]="imagenAmpliada" alt="Imagen ampliada" />
+  </div>
+</div>
+
