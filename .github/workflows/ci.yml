@@ -8,7 +8,9 @@ on:
 
 # IMPORTANTE: Se requieren estos permisos para que el pipeline pueda
 # dibujar la interfaz de los reportes en la ventana de tus commits/PRs
+# IMPORTANTE: Configuración de seguridad corregida
 permissions:
+  contents: read
   checks: write
   pull-requests: write
 
