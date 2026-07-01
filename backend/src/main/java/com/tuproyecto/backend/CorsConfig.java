@@ -14,6 +14,7 @@ public class CorsConfig {
                 registry.addMapping("/api/**")
                         .allowedOrigins(
                             "http://localhost:4200",      // Desarrollo local
+                            "https://satori-frontend-production.up.railway.app"
                             "http://satori-frontend:80",  // Docker
                             "http://frontend:80",         // Alternativa Docker
                             "http://localhost"            // Por si acaso
