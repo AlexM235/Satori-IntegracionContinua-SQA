@@ -12,14 +12,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins(
-                            "https://satori-frontend-production.up.railway.app",
-                            "http://satori-frontend-production.up.railway.app",
-                            "http://localhost:4200",      // Desarrollo local
-                            "http://satori-frontend:80",  // Docker
-                            "http://frontend:80",         // Alternativa Docker
-                            "http://localhost"            // Por si acaso
-                        )
+                        .allowedOriginPatterns("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true)
