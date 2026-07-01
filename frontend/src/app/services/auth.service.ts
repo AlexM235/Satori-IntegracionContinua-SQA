@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -18,7 +19,7 @@ import {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly apiUrl = '/api/auth';
+  private readonly apiUrl = environment.apiUrl + '/api/auth';
   private readonly storageKey = 'currentSession';
   private currentUserSubject = new BehaviorSubject<Usuario | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();

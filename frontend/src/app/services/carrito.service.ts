@@ -1,4 +1,5 @@
 // app/services/carrito.service.ts
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../models/producto.model';
@@ -9,7 +10,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CarritoService {
-  private apiUrl = 'http://localhost:8080/api/carrito';
+  private apiUrl = environment.apiUrl + '/api/carrito';
 
   constructor(
     private http: HttpClient,
@@ -31,7 +32,7 @@ export class CarritoService {
     return this.http.post<void>(`${this.apiUrl}/agregar`, payload);
   }
   eliminarProducto(usuarioId: number, productoId: number) {
-  return this.http.delete(`http://localhost:8080/api/carrito/${usuarioId}/eliminar/${productoId}`);
+  return this.http.delete(`${this.apiUrl}/${usuarioId}/eliminar/${productoId}`);
 }
 
 
@@ -44,7 +45,7 @@ export class CarritoService {
   }
 
   vaciarCarrito(usuarioId: number) {
-  return this.http.delete(`http://localhost:8080/api/carrito/vaciar/${usuarioId}`);
+  return this.http.delete(`${this.apiUrl}/vaciar/${usuarioId}`);
 }
 
 }

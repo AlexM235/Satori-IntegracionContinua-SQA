@@ -1,4 +1,5 @@
 // app/services/pago.service.ts
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pago } from '../models/pago.model';
@@ -7,7 +8,7 @@ import { Pago } from '../models/pago.model';
   providedIn: 'root'
 })
 export class PagoService {
-  private apiUrl = 'http://localhost:8080/api/pagos';
+  private apiUrl = environment.apiUrl + '/api/pagos';
 
   constructor(private http: HttpClient) {}
 

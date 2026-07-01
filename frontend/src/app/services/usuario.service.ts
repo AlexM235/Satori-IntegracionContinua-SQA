@@ -1,4 +1,5 @@
 // app/services/usuario.service.ts
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/usuario.model';
@@ -7,7 +8,7 @@ import { Usuario } from '../models/usuario.model';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:8080/api/usuarios';
+  private apiUrl = environment.apiUrl + '/api/usuarios';
 
   constructor(private http: HttpClient) {}
 

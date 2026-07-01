@@ -1,4 +1,5 @@
 // producto.service.ts
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Producto } from '../models/producto.model';
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductoService {
-  private apiUrl = '/api/productos';
+  private apiUrl = environment.apiUrl + '/api/productos';
 
   constructor(private http: HttpClient) { }
 
