@@ -21,7 +21,7 @@ public class ProductoService {
     @PostConstruct
     public void init() {
         if (repository.findAll().isEmpty()) {
-            String baseUrl = "http://localhost:8080/imagenes/"; //Esto es para manejar la ruta de las imagenes
+            String baseUrl = "https://satori-backend-production.up.railway.app/imagenes/"; //Esto es para manejar la ruta de las imagenes
             // Producto 1
             Producto p1 = new Producto("Reloj POEDGAR Azul Plateado", 20.0);
             p1.setTipo(TipoProducto.RELOJ);
