@@ -3,7 +3,7 @@
   "nombre" : "Reloj POEDGAR Azul Plateado",
   "descripcion" : null,
   "precio" : 20.0,
-  "imagen" : "http://localhost:8080/imagenes/azul_plateado.jpg",
+  "imagen" : "https://satori-backend-production.up.railway.app/imagenes/azul_plateado.jpg",
   "tipo" : "RELOJ",
   "cantidad" : 2000
 }, {
@@ -11,7 +11,7 @@
   "nombre" : "Reloj POEDGAR Blanco Plateado",
   "descripcion" : null,
   "precio" : 20.0,
-  "imagen" : "http://localhost:8080/imagenes/blanco_plateado.jpg",
+  "imagen" : "https://satori-backend-production.up.railway.app/imagenes/blanco_plateado.jpg",
   "tipo" : "RELOJ",
   "cantidad" : 2000
 }, {
@@ -19,7 +19,7 @@
   "nombre" : "Reloj POEDGAR Negro Plateado",
   "descripcion" : null,
   "precio" : 20.0,
-  "imagen" : "http://localhost:8080/imagenes/negro_plateado.jpg",
+  "imagen" : "https://satori-backend-production.up.railway.app/imagenes/negro_plateado.jpg",
   "tipo" : "RELOJ",
   "cantidad" : 2000
 }, {
@@ -27,7 +27,7 @@
   "nombre" : "Reloj POEDGAR Verde Plateado",
   "descripcion" : null,
   "precio" : 20.0,
-  "imagen" : "http://localhost:8080/imagenes/verde_plateado.jpg",
+  "imagen" : "https://satori-backend-production.up.railway.app/imagenes/verde_plateado.jpg",
   "tipo" : "RELOJ",
   "cantidad" : 2000
 }, {
@@ -35,7 +35,7 @@
   "nombre" : "Reloj del Rayo McQueen",
   "descripcion" : "Cuchau",
   "precio" : 10000.0,
-  "imagen" : "http://localhost:8080/imagenes/1751971226678_RayoMcqueen.jpg",
+  "imagen" : "https://satori-backend-production.up.railway.app/imagenes/1751971226678_RayoMcqueen.jpg",
   "tipo" : "RELOJ",
   "cantidad" : 100
 }, {
@@ -43,7 +43,7 @@
   "nombre" : "Probando",
   "descripcion" : "Probando",
   "precio" : 1.0,
-  "imagen" : "http://localhost:8080/imagenes/1751980618072_idk.jpg",
+  "imagen" : "https://satori-backend-production.up.railway.app/imagenes/1751980618072_idk.jpg",
   "tipo" : "RELOJ",
   "cantidad" : 1
 } ]
