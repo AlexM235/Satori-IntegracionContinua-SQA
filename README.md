@@ -13,7 +13,8 @@ Proyecto desarrollado con un enfoque centrado en el **Aseguramiento de la Calida
 
 ## 🚀 Despliegue en Vivo
 
-El proyecto se encuentra desplegado de forma automatizada en la nube de Railway (Hasta el 30/07/2026). Puedes acceder a la aplicación funcional a través del siguiente enlace:
+El proyecto se encuentra desplegado de forma automatizada en la nube de Railway (Hasta el 30/07/2026).
+Puedes acceder a la aplicación funcional a través del siguiente enlace:
 
 🔗 **[Visitar Satori Web (Frontend)](https://satori-frontend-production.up.railway.app)**
 
