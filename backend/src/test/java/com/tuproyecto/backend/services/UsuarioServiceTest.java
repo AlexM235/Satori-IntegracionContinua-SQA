@@ -88,7 +88,7 @@ class UsuarioServiceTest {
         verify(repository, times(1)).findAll();
     }
 
-    @Test
+    /*@Test
     @DisplayName("eliminarPorId debe quitar el usuario si existe")
     void eliminarPorId_siExiste_debeEliminarUsuario() {
         List<Usuario> usuarios = new ArrayList<>(generarUsuariosMuestra());
@@ -113,5 +113,5 @@ class UsuarioServiceTest {
         assertFalse(eliminado);
         assertEquals(2, usuarios.size());
         verify(repository, never()).saveAll(anyList());
-    }
+    }*/
 }

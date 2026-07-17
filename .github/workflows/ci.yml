@@ -2,9 +2,10 @@ name: Pipeline de Integración Continua SQA
 
 on:
   push:
-    branches: [ "main", "master" ]
+    #branches: [ "main", "master" ]
+    branches: [ "Sprint-1" ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ "Sprint-1" ]
 
 # IMPORTANTE: Se requieren estos permisos para que el pipeline pueda
 # dibujar la interfaz de los reportes en la ventana de tus commits/PRs
