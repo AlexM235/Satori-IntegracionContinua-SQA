@@ -98,7 +98,7 @@ class CarritoServiceTest {
         verify(usuarioService, times(1)).guardarUsuarios(anyList());
     }
 
-    /*@Test
+    @Test
     @DisplayName("eliminarProductoDelCarrito debe quitar una instancia del producto")
     void eliminarProductoDelCarrito_debeQuitarUnProducto() {
         when(usuarioService.getAllUsuarios()).thenReturn(List.of(usuario));
@@ -122,5 +122,5 @@ class CarritoServiceTest {
 
         assertTrue(usuario.getCarrito().isEmpty());
         verify(usuarioService, times(1)).guardarUsuarios(anyList());
-    }*/
+    }
 }
