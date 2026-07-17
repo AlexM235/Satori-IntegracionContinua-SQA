@@ -90,7 +90,7 @@ class PagoServiceTest {
         assertEquals("uuid2", resultado.get(0).getId());
     }
 
-    /*@Test
+    @Test
     @DisplayName("actualizarEstado debe cambiar el estado y la razón de un pago existente")
     void actualizarEstado_debeModificarPago() {
         List<Pago> pagos = generarPagosMuestra();
@@ -119,7 +119,7 @@ class PagoServiceTest {
         assertEquals(EstadoPago.RECHAZADO, pagoModificado.getEstado());
         assertEquals(razon, pagoModificado.getRazonRechazo());
         verify(pagosRepository, times(1)).saveAll(pagos);
-    }*/
+    }
 
 
     @Test
@@ -133,7 +133,7 @@ class PagoServiceTest {
         verify(pagosRepository, times(1)).findAll();
     }
 
-    /*@Test
+    @Test
     @DisplayName("eliminarPago debe quitar el pago de la lista")
     void eliminarPago_debeQuitarPago() {
         List<Pago> pagos = new ArrayList<>(generarPagosMuestra());
@@ -145,5 +145,5 @@ class PagoServiceTest {
         assertEquals(2, pagos.size());
         assertFalse(pagos.stream().anyMatch(p -> p.getId().equals("uuid1")));
         verify(pagosRepository, times(1)).saveAll(pagos);
-    }*/
+    }
 }
